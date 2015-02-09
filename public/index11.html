@@ -1,0 +1,163 @@
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+          	
+          	<title>Page Loading Effects | Demo 11</title>
+
+          	<link rel="shortcut icon" href="favicon.ico" />
+            <link rel="apple-touch-icon" href="/img/underConstruction/favicon.png" />
+            <link rel="stylesheet" type="text/css" href="/css/pageload-normalize.css" />
+            <link rel="stylesheet" type="text/css" href="/css/pageload-component.css" />
+            <link rel="stylesheet" href="/css/maximage.css" type="text/css" media="screen" charset="utf-8" />
+            <link rel="stylesheet" href="/css/underConstructionStyles.css" type="text/css" media="screen" charset="utf-8" />
+
+            <script src="/js/PageLoaderSnap.svg-min.js"></script>
+          		<!--[if IE]>
+            		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            		<![endif]-->
+            	</head>
+            	<body>
+            		<div id="loader" class="pageload-overlay" data-opening="m -5,-5 0,70 90,0 0,-70 z m 5,35 c 0,0 15,20 40,0 25,-20 40,0 40,0 l 0,0 C 80,30 65,10 40,30 15,50 0,30 0,30 z">
+            			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none" >
+            				<path d="m -5,-5 0,70 90,0 0,-70 z m 5,5 c 0,0 7.9843788,0 40,0 35,0 40,0 40,0 l 0,60 c 0,0 -3.944487,0 -40,0 -30,0 -40,0 -40,0 z"/>
+            			</svg>
+            		</div><!-- /pageload-overlay -->
+
+            		<div id="pagewrap" class="pagewrap" style="display:none;">
+            			<nav class="social-nav">
+                    <ul>
+                      <li><a href="#"><img src="/img/underConstruction/icon-facebook.png" /></a></li>
+                      <li><a href="#"><img src="/img/underConstruction/icon-twitter.png" /></a></li>
+                      <li><a href="#"><img src="/img/underConstruction/icon-google.png" /></a></li>
+                      <li><a href="#"><img src="/img/underConstruction/icon-dribbble.png" /></a></li>
+                      <li><a href="#"><img src="/img/underConstruction/icon-linkedin.png" /></a></li>
+                      <li><a href="#"><img src="/img/underConstruction/icon-pinterest.png" /></a></li>
+                    </ul>
+                  </nav>
+
+                  <!-- Switch to full screen -->
+                  <button class="full-screen" onclick="$(document).toggleFullScreen()"></button>
+
+                  <!-- Site Logo -->
+                  <div id="logo">EssaysForGRE</div><p><br /></p>
+
+                  <!-- Main Navigation -->
+                  <nav class="main-nav">
+                    <ul>
+                      <li><a href="#home" class="active">Home</a></li>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                    </ul>
+                  </nav>
+
+                  <!-- Slider Controls -->
+                  <a href="" id="arrow_left"><img src="/img/underConstruction/arrow-left.png" alt="Slide Left" /></a>
+                  <a href="" id="arrow_right"><img src="/img/underConstruction/arrow-right.png" alt="Slide Right" /></a>
+
+                  <!-- Home Page -->
+                  <section class="content show" id="home">
+                    <h1>Hold on tight...</h1>
+                    <h5>A Revolutionary Website is on the way!!!</h5>
+                    <p>Our new site is coming soon!</p>
+                    <p><a href="#about">More info &#187;</a></p>
+                  </section>
+
+                  <!-- About Page -->
+                  <section class="content hide" id="about">
+                    <h1>About</h1>
+                    <h5>Here's a little about what we're up to.</h5>
+                    <p>We are keen on working on solving the pain points of Analytical Writing Section for the Gre test taker.</p>
+                    <p><a href="#">Follow our updates on Twitter</a></p>
+                  </section>
+
+                  <!-- Contact Page -->
+                  <section class="content hide" id="contact">
+                    <h1>Contact</h1>
+                    <h5>Get in touch.</h5>
+                    <p>Email: <a href="#">vicky380@gmail.com</a><br /></p>
+
+                  </section>
+
+                  <!-- Background Slides -->
+                  <div id="maximage">
+                    <div>
+                      <img src="/img/underConstruction/backgrounds/bg-img-1.jpg" alt="" />
+                      <img class="gradient" src="/img/underConstruction/backgrounds/gradient.png" alt="" />
+                    </div>
+                    <div>
+                      <img src="/img/underConstruction/backgrounds/bg-img-2.jpg" alt="" />
+                      <img class="gradient" src="/img/underConstruction/backgrounds/gradient.png" alt="" />
+                    </div>
+                    <div>
+                      <img src="/img/underConstruction/backgrounds/bg-img-3.jpg" alt="" />
+                      <img class="gradient" src="/img/underConstruction/backgrounds/gradient.png" alt="" />
+                    </div>
+                    <div>
+                      <img src="/img/underConstruction/backgrounds/bg-img-4.jpg" alt="" />
+                      <img class="gradient" src="/img/underConstruction/backgrounds/gradient.png" alt="" />
+                    </div>
+                    <div>
+                      <img src="/img/underConstruction/backgrounds/bg-img-5.jpg" alt="" />
+                      <img class="gradient" src="/img/underConstruction/backgrounds/gradient.png" alt="" />
+                    </div>
+                  </div>
+
+                  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+                  <script src="/js/jquery.easing.min.js" type="text/javascript" charset="utf-8"></script>
+                  <script src="/js/jquery.cycle.all.js" type="text/javascript" charset="utf-8"></script>
+                  <script src="/js/jquery.maximage.js" type="text/javascript" charset="utf-8"></script>
+                  <script src="/js/jquery.fullscreen.js" type="text/javascript" charset="utf-8"></script>
+                  <script src="/js/jquery.ba-hashchange.js" type="text/javascript" charset="utf-8"></script>
+                  <script src="/js/main.js" type="text/javascript" charset="utf-8"></script>
+
+                  <script type="text/javascript" charset="utf-8">
+                    $(function(){
+                      $('#maximage').maximage({
+                        cycleOptions: {
+                          fx: 'fade',
+                      speed: 1000, // Has to match the speed for CSS transitions in jQuery.maximage.css (lines 30 - 33)
+                      timeout: 5000,
+                      prev: '#arrow_left',
+                      next: '#arrow_right',
+                      pause: 0,
+                      before: function(last,current){
+                        if(!$.browser.msie){
+                          // Start HTML5 video when you arrive
+                          if($(current).find('video').length > 0) $(current).find('video')[0].play();
+                        }
+                      },
+                      after: function(last,current){
+                        if(!$.browser.msie){
+                          // Pauses HTML5 video when you leave it
+                          if($(last).find('video').length > 0) $(last).find('video')[0].pause();
+                        }
+                      }
+                    },
+                    onFirstImageLoaded: function(){
+                      jQuery('#cycle-loader').hide();
+                      jQuery('#maximage').fadeIn('fast');
+                    }
+                  });
+
+                  // Helper function to Fill and Center the HTML5 Video
+                  jQuery('video,object').maximage('maxcover');
+
+                });
+        </script>
+      </div><!-- /pagewrap -->
+
+      <script src="/js/PageLoaderClassie.js"></script>
+      <script src="/js/PageLoaderSvgLoader.js"></script>
+      <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js'></script>
+      <script>
+       (function() {
+        var pageWrap = document.getElementById( 'pagewrap' ),
+        loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 400, easingIn : mina.easeinout } );
+        $(document).ready(function() {
+         $('#pagewrap').show();
+         loader.hide();
+       });	
+      })();
+    </script>
+  </body>
+  </html>
