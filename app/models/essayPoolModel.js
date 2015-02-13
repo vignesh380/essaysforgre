@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({
-	 // essaypool_id :String,
+	 essaypool_id :Number,
 	 essay_type:String
 	,essay_topic:String
 });
