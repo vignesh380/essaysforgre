@@ -55,7 +55,7 @@ App.require("config/routes")(App.app);
 
 //uncomment below later
 App.require('config/database')
-('mongodb://viggy:viggy@54.145.121.171:31531/heroku_app32320230'); 
+('mongodb://liveconnect:liveconnect@54.145.121.171:31531/heroku_app32320230'); 
 
 
 //App.require('config/database')(process.env.DATABASE_URL || 'mongodb://localhost/nodeslash_development');

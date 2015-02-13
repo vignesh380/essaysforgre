@@ -1,41 +1,32 @@
 var EssayPool = App.model('essayPoolModel');
-
+var latestID = 0 ;
 function addToEssayPool(req,res) {
-	var essay = new EssayPool({
-		essaypool_id:req.body.essaypool_id,
-		essay_type:req.body.essay_type,
-		essay_topic:req.body.essay_topic
-	});	
-console.log("essaypool_id : " + essay.essapool_id);
 
-
-	findlatestID(essay);
-
-	essay.save(function(err) {
-		if(err) {
+	EssayPool.findOne({}).sort('-essaypool_id').exec(function (err, result) {
+		
+		if (err) {
 			res.status(422).send('Problem: ' + err.message );
 		} else {
-			res.status(200).send('Added to the pool successfully :D');
+			var essay = new EssayPool({
+				essaypool_id: result.essaypool_id + 1,
+				essay_type:req.body.essay_type,
+				essay_topic:req.body.essay_topic
+			});		
+			essay.save(function(err) {
+				if(err) {
+					res.status(422).send('Problem: ' + err.message );
+				} else {
+					res.status(200).send('Added to the pool successfully :D <a href="/addEssayTopic">go back </a>');
+				}
+			});
 		}
-	});
+	});	
 }
 
 function showPage(req,res){
     console.log("Node app got request to /addEssayTopic :");
   res.sendFile('addEssayTopic.html', { root: 'public' }); 
 
-}
-
-function findlatestID(essay){
-
-	var id = essay.findOne({} , 'essaypool_id' , sort({essaypool_id : 'desc' }), function (err, person) {
-  	if (err) {
-  	res.status(422).send('Problem: ' + err.message );
-  } else {
-  	id++; //increment it 
-  	essay.essaypool_id = id ;// set it back to essaypool_id
-  }
-});
 }
 
 exports.add = addToEssayPool;
