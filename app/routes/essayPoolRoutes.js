@@ -11,7 +11,7 @@ if (essay.essapool_id == undefined){
 	essay.essapool_id = 0;
 }
 
-	findlatestID(essay);
+	//findlatestID(essay);
 
 	essay.save(function(err) {
 		if(err) {
