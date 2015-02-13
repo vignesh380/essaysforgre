@@ -2,14 +2,12 @@ var EssayPool = App.model('essayPoolModel');
 
 function addToEssayPool(req,res) {
 	var essay = new EssayPool({
-		essaypool_id:req.body.essapool_id,
+		essaypool_id:req.body.essaypool_id,
 		essay_type:req.body.essay_type,
 		essay_topic:req.body.essay_topic
 	});	
 console.log("essaypool_id : " + essay.essapool_id);
-if (essay.essapool_id == undefined){
-	essay.essapool_id = 0;
-}
+
 
 	//findlatestID(essay);
 
