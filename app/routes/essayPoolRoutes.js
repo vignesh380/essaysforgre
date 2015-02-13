@@ -28,7 +28,7 @@ function showPage(req,res){
 
 function findlatestID(essay){
 
-	var id = essay.findOne( 'essaypool_id',sort({essaypool_id : 'desc' }), function (err, person) {
+	var id = essay.findOne({} , 'essaypool_id' , sort({essaypool_id : 'desc' }), function (err, person) {
   	if (err) {
   	res.status(422).send('Problem: ' + err.message );
   } else {
