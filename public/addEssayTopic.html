@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+		<title>Essay addition page</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+	    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	    <script src="./Signin Template for Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	      <![endif]-->
+  </head>
+  <body>
+  	<div class="container">
+  		<form class="form-signin" method="POST" action="/submit_to_essayPool">
+  			<h2 class="form-signin-heading">Please Enter the Essay Topic details</h2>
+  			<div class="form-horizontal">
+  				<div class="form-group">
+  					<div class="col-md-12">
+  						<textarea name="essay_topic" class="form-control" rows="3" placeholder="Essay Topic" required></textarea>
+  					</div>
+  				</div>
+  			</div>
+
+  			<div class="container">
+  				<div class="row">
+  					<h2>Choose essay type:</h2>
+  					<label class="radio-inline">
+  						<input name="essay_type" value="issue" type="radio"> Issue Essay
+  					</label>
+  					<label class="radio-inline">
+  						<input name="essay_type" value="argument"  type="radio"> Argument Essay
+  					</label>
+  				</div>
+  			</div>
+  			<br/>
+  			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  		</form>
+  	</div> <!-- /container -->
+  	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  	<script src="./Signin Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
+

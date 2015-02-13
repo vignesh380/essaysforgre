@@ -4,7 +4,7 @@ var fs = require('fs');
 
 //var database = require('./config/database');
 
-var routes = require('./config/routes');
+//var routes = require('./config/routes');
 /*old code 
 //----------------------------experimental code
 

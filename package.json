@@ -9,7 +9,9 @@
   "dependencies": {
     "express": "4.11.x",
     "mongoose": "3.8.x",
-    "passport": "0.2.x"
+    "passport": "0.2.x",
+    "body-parser": "1.11.x",
+    "connect": "3.3.x"
   },
   "engines": {
     "node": "0.10.x"

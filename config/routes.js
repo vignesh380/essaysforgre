@@ -2,6 +2,8 @@
 
 var express = require('express');
 var fs = require('fs');
+var bodyParser = require('body-parser');
+
 
 function ensureAuthenticated(req,res,next) {
   if(req.session.username) {
@@ -63,6 +65,7 @@ function addToDatabase(req,res){
   res.end("Added " + id +" to db");
 }
 
+
 function handle404(req,res){
   
   res.sendFile('404.html', { root: 'public' }); 
@@ -71,8 +74,14 @@ function handle404(req,res){
 // expose the routes to our app with module.exports
 
 module.exports = function(app) {
+  
 
 app.set('port', (process.env.PORT || 5000));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
 //app.use(express.bodyParser());
 //app.use(methodOverride());
 //app.engine('jade', require('jade').__express);
@@ -83,6 +92,10 @@ app.get('/login',loginPage);
 app.get('/essay',essayPage);
 app.get('/viewEssay/:id',viewEssay);
 app.get('/home',tempHomePage);
+
+var essayPoolRoutes = App.route('essayPoolRoutes');
+app.get('/addEssayTopic',essayPoolRoutes.showPage);
+app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
 /*app.post('/login',passport.authenticate('local', { 
   successRedirect: '/',

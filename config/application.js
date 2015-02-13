@@ -1,7 +1,7 @@
   var env 		  = process.env.NODE_ENV || 'development'
 	, packageJson = require ('../package.json')
 	, path 		  = require('path')
-	, express     = require('express');
+	, express     = require('express'); 
 
 console.log('Loading App in ' + env +' mode.');
 
