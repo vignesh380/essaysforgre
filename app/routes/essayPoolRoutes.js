@@ -9,7 +9,7 @@ function addToEssayPool(req,res) {
 console.log("essaypool_id : " + essay.essapool_id);
 
 
-	//findlatestID(essay);
+	findlatestID(essay);
 
 	essay.save(function(err) {
 		if(err) {
@@ -28,7 +28,7 @@ function showPage(req,res){
 
 function findlatestID(essay){
 
-	var id = essay.findOne( 'essaypool_id',sort('-score'), function (err, person) {
+	var id = essay.findOne( 'essaypool_id',sort('desc'), function (err, person) {
   	if (err) {
   	res.status(422).send('Problem: ' + err.message );
   } else {
