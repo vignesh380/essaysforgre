@@ -129,12 +129,10 @@ app.post('/login',userProfilePage);
 app.get('/signup',signUpPage);
 app.post('/signup',passport.authenticate('local-signup', { 
   successRedirect: '/profile',
-  failureRedirect: '/login',
+  failureRedirect: '/signup',
   failureFlash: true })
 );
 
- console.log('public files in the routes file are in '+ App.appPath('public'));
-//app.use(express.static(__dirname + '/public'));
 app.use(express.static(App.appPath('/public')));
 
 // 404 must be the last route 
