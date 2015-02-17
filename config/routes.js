@@ -6,11 +6,14 @@ var bodyParser = require('body-parser');
 
 
 function ensureAuthenticated(req,res,next) {
-  if(req.session.username) {
-    next();
-  } else { 
-    res.redirect("/");
+  
+  // if user is authenticated in the session, carry on 
+  if(req.isAuthenticated()) {
+     return next();
   }
+
+  //if they aren't redirect them to the home page  
+    res.redirect("/");  
 }
 
 function homePage(req,res) { 
@@ -65,22 +68,36 @@ function addToDatabase(req,res){
   res.end("Added " + id +" to db");
 }
 
+function logout(req , res) {
+  req.logout();
+  res.redirect('/');
+}
+
 
 function handle404(req,res){
   
   res.sendFile('404.html', { root: 'public' }); 
 }
 
+function userProfilePage(req,res){
+  console.log("got post request from login page");
+  res.sendFile('userProfile.html', { root: 'public' }); 
+ /* res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end("hi");*/
+}
+
+function signUpPage(req,res){
+  console.log("got post request from login page");
+  res.sendFile('signup.html', { root: 'public' }); 
+ /* res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end("hi");*/
+}
+
 // expose the routes to our app with module.exports
 
-module.exports = function(app) {
+module.exports = function(app,passport) {
   
-
 app.set('port', (process.env.PORT || 5000));
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(bodyParser.json());
 
 //app.use(express.bodyParser());
 //app.use(methodOverride());
@@ -88,10 +105,13 @@ app.use(bodyParser.json());
 
 app.get('/newUser/:id', addToDatabase);
 app.get('/', homePage);
-app.get('/login',loginPage);
+
+app.get('/logout',logout);
 app.get('/essay',essayPage);
+
 app.get('/viewEssay/:id',viewEssay);
 app.get('/home',tempHomePage);
+app.get('/profile',userProfilePage);
 
 var essayPoolRoutes = App.route('essayPoolRoutes');
 app.get('/addEssayTopic',essayPoolRoutes.showPage);
@@ -103,12 +123,16 @@ app.post('/submit_to_essayPool',essayPoolRoutes.add);
   failureFlash: true })
 );*/
 
-app.post('/login',function(req,res){
-  console.log("got post request from login page");
-  res.sendFile('userProfile.html', { root: 'public' }); 
- /* res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end("hi");*/
-});
+app.get('/login',loginPage);
+app.post('/login',userProfilePage);
+
+app.get('/signup',signUpPage);
+app.post('/signup',passport.authenticate('local-signup', { 
+  successRedirect: '/profile',
+  failureRedirect: '/login',
+  failureFlash: true })
+);
+
  console.log('public files in the routes file are in '+ App.appPath('public'));
 //app.use(express.static(__dirname + '/public'));
 app.use(express.static(App.appPath('/public')));
