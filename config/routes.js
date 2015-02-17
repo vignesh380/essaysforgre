@@ -105,7 +105,7 @@ app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
 app.post('/login',function(req,res){
   console.log("got post request from login page");
-  res.sendFile('userProfile.html', { root: 'public' }); 
+  res.sendFile('Profilepage.html', { root: 'public' }); 
  /* res.writeHead(200, {'Content-Type': 'text/html'});
   res.end("hi");*/
 });
