@@ -70,11 +70,13 @@ var LocalStrategy = require('passport-local').Strategy
 				return done(err);
 			}
 			if(!user) {
-				return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+				console.log('Oops! cannot find user for ' + email );
+				return done(null, false, req.flash('loginMessage', 'Oops! cannot find user/email.'));
 			} 
 
 			//if user is found bu the password is wrong
 			if(!user.validatePassword(password)){
+				console.log('Oops! Wrong password for ' + email );
 				return done(null, false , req.flash('loginMessage', 'Oops! Wrong password.'));  					
 			}
 
