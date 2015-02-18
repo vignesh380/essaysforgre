@@ -117,14 +117,14 @@ var essayPoolRoutes = App.route('essayPoolRoutes');
 app.get('/addEssayTopic',essayPoolRoutes.showPage);
 app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
-/*app.post('/login',passport.authenticate('local', { 
-  successRedirect: '/',
+app.post('/login',passport.authenticate('local-login', { 
+  successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true })
-);*/
+);
 
 app.get('/login',loginPage);
-app.post('/login',userProfilePage);
+//app.post('/login',userProfilePage);
 
 app.get('/signup',signUpPage);
 app.post('/signup',passport.authenticate('local-signup', { 

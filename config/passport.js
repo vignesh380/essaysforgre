@@ -54,4 +54,34 @@ var LocalStrategy = require('passport-local').Strategy
   			});
   		});
   	}));
+
+
+//local login
+  	passport.use('local-login', new LocalStrategy({
+
+  		usernameField: 'email',
+  		passwordField: 'password',
+  		passReqToCallback: true //allows us to pass back the entire request to the callback
+  	},
+  	function(req, email, password, done) {
+	
+		User.findOne({'local.email' : email}, function(err, user) {
+			if(err) {
+				return done(err);
+			}
+			if(!user) {
+				return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+			} 
+
+			//if user is found bu the password is wrong
+			if(!user.validatePassword(password)){
+				return done(null, false , req.flash('loginMessage', 'Oops! Wrong password.'));  					
+			}
+
+			//all is well, return sucessful user
+
+			return done(null, user);
+		});
+	
+  	}));  	
   };
