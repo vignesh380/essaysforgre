@@ -1,7 +1,13 @@
-  var env 		  = process.env.NODE_ENV || 'development'
-	, packageJson = require ('../package.json')
-	, path 		  = require('path')
-	, express     = require('express'); 
+  var env 		   = process.env.NODE_ENV || 'development'
+	, packageJson  = require ('../package.json')
+	, path 		   = require('path')
+	, express      = require('express')
+	, passport     = require('passport')
+	, flash        = require('connect-flash') 
+
+	, cookieParser = require('cookie-parser')
+	, bodyParser   = require('body-parser')
+	, session 	   = require('express-session');
 
 console.log('Loading App in ' + env +' mode.');
 
@@ -35,27 +41,28 @@ global.App = {
 	}
 }
 
+// configuration ========================================================================
+App.app.use(cookieParser()); // read cookies (needed for auth)
 
-//App.app.use(express.cookieParser());
-//App.app.use(express.cookieSession({secret: "essaysforgreessayBody", key: "session"}));
-//App.app.use(express.static(App.appPath('Public')));
+// get info from html forms
+App.app.use(bodyParser.urlencoded({
+  extended: true
+}));
+App.app.use(bodyParser.json());
 
+// required for passport  
+App.app.use(session({secret: 'essaysforgreessayBodysecret'}));// session secret
+App.app.use(passport.initialize());
+App.app.use(passport.session()); // persistent login sessions
+App.app.use(flash()); // use connect-flash for flash messages stored in sessions
+
+// passport ============================================================================
+App.require("config/passport")(passport);
+
+// routes ==============================================================================
 console.log('gonna call routes');
+App.require("config/routes")(App.app , passport);
 
-//when everything is fixed properly this line to be used :
-App.require("config/routes")(App.app);
-//App.require("routes")(App.app);
-/*if(env != 'development'){
-	App.require("config/routes")(App.app);
-} else {
-	//do nothing
-}*/
-
-//Database setup
-
-//uncomment below later
+// Database configuration ==============================================================
 App.require('config/database')
 ('mongodb://liveconnect:liveconnect@54.145.121.171:31531/heroku_app32320230'); 
-
-
-//App.require('config/database')(process.env.DATABASE_URL || 'mongodb://localhost/nodeslash_development');
