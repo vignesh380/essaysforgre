@@ -7,11 +7,19 @@ function addToEssayPool(req,res) {
 		if (err) {
 			res.status(422).send('Problem: ' + err.message );
 		} else {
+			if(result){
 			var essay = new EssayPool({
 				essaypool_id: result.essaypool_id + 1,
 				essay_type:req.body.essay_type,
 				essay_topic:req.body.essay_topic
-			});		
+				});		
+			} else { 
+				var essay = new EssayPool({
+				essaypool_id: 0,
+				essay_type:req.body.essay_type,
+				essay_topic:req.body.essay_topic
+				});		
+			} 
 			essay.save(function(err) {
 				if(err) {
 					res.status(422).send('Problem: ' + err.message );
@@ -19,7 +27,7 @@ function addToEssayPool(req,res) {
 					res.status(200).send('Added to the pool successfully :D <a href="/addEssayTopic">go back </a>');
 				}
 			});
-		}
+	}
 	});	
 }
 

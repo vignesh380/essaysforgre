@@ -37,7 +37,10 @@ global.App = {
 		return this.require("app/routes/" + path);
 	}
 	, util: function(path) {
-		return this.require("app/utils/" + path)
+		return this.require("app/utils/" + path);
+	}
+	, middleware: function(path) {
+		return this.require("app/middlewares/" + path);
 	}
 }
 
