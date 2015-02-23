@@ -1,10 +1,10 @@
 {
   "name": "node-js-getting-started",
   "version": "0.1.2",
-  "description": "A simple Node.js app using Express 4",
+  "description": "Node.js app for essaysForGRE",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "set NODE_ENV=production;node index.js"
   },
   "dependencies": {
     "express": "4.11.x",

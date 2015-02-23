@@ -37,7 +37,10 @@ global.App = {
 		return this.require("app/routes/" + path);
 	}
 	, util: function(path) {
-		return this.require("app/utils/" + path)
+		return this.require("app/utils/" + path);
+	}
+	, middleware: function(path) {
+		return this.require("app/middlewares/" + path);
 	}
 }
 
@@ -50,11 +53,13 @@ App.app.use(bodyParser.urlencoded({
 }));
 App.app.use(bodyParser.json());
 
+
 // required for passport  
 App.app.use(session({secret: 'essaysforgreessayBodysecret'}));// session secret
 App.app.use(passport.initialize());
 App.app.use(passport.session()); // persistent login sessions
 App.app.use(flash()); // use connect-flash for flash messages stored in sessions
+
 
 // passport ============================================================================
 App.require("config/passport")(passport);
