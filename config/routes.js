@@ -26,7 +26,7 @@ function homePage(req,res) {
 
 function tempHomePage(req,res) { 
  
- path = 'startPage.html';
+ path = 'index11.html';
  console.log("serving /" + path);
  res.sendFile(path, { root: 'public' }); 
 }
@@ -137,5 +137,12 @@ app.use(express.static(App.appPath('/public')));
 
 // 404 must be the last route 
 app.get('*', handle404);
+
+//test
+
+app.all('/',function(req, res){
+  req.flash('test','worked off maccha');
+  res.redirect('/');
+})
 
 };
