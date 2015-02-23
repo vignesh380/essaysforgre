@@ -49,12 +49,13 @@ App.app.use(bodyParser.urlencoded({
   extended: true
 }));
 App.app.use(bodyParser.json());
-App.app.use(flash()); // use connect-flash for flash messages stored in sessions
+
 
 // required for passport  
 App.app.use(session({secret: 'essaysforgreessayBodysecret'}));// session secret
 App.app.use(passport.initialize());
 App.app.use(passport.session()); // persistent login sessions
+App.app.use(flash()); // use connect-flash for flash messages stored in sessions
 
 
 // passport ============================================================================
