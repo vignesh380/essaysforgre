@@ -8,7 +8,7 @@ function homePage(req,res) {
 
 function tempHomePage(req,res) { 
  
- path = 'index11.html';
+ path = 'startPage.html';
  console.log("serving /" + path);
  res.sendFile(path, { root: 'public' }); 
 }

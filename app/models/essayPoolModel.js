@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var random = require('mongoose-simple-random');
 
 var schema = mongoose.Schema({
 	 essaypool_id :Number,
@@ -6,6 +7,8 @@ var schema = mongoose.Schema({
 	 essay_topic:String
 });
 
-var Model = mongoose.model('ItemTemplate',schema);
+schema.plugin(random);
+
+var Model = mongoose.model('EssayPool',schema);
 
 module.exports = Model;
