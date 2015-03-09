@@ -37,6 +37,16 @@ function showPage(req,res){
 
 }
 
+function getEssayTopicFromPool(essay_type , callback) {
+	EssayPool.findOneRandom({"essay_type" : essay_type} , function(error, result) {
+		if(error) {
+			res.status(422).send('Problem: ' + err.message );
+		} else {
+			callback(result); 
+		}
+	});
+}
+
 exports.add = addToEssayPool;
 exports.showPage = showPage;
-
+exports.getEssayTopicFromPool = getEssayTopicFromPool;

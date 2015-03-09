@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 
 // expose the routes to our app with module.exports
 module.exports = function(app,passport) {
-
   app.set('port', (process.env.PORT || 5000));
   app.set('view engine','jade');
 
@@ -18,6 +17,7 @@ module.exports = function(app,passport) {
   // essayPageRoutes ===============================================================
   var essayPageRoutes = App.route('essayPageRoutes');
   app.get('/essay',essayPageRoutes.essayPage);
+  app.post('/essay',essayPageRoutes.submitEssay);
 
   // userProfilePageRoutes =========================================================
   var userProfilePageRoutes = App.route('userProfilePageRoutes');
@@ -30,15 +30,17 @@ module.exports = function(app,passport) {
   // logoutPageRoutes ==============================================================
   var logoutPageRoutes = App.route('logoutPageRoutes');
   app.get('/logout',logoutPageRoutes.logout);
+  app.get('/signout',logoutPageRoutes.logout);
 
   // essayPoolRoutes ===============================================================
   var essayPoolRoutes = App.route('essayPoolRoutes');
   app.get('/addEssayTopic',essayPoolRoutes.showPage);
   app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
-  // loginPageRoutes ===============================================================
-  var loginPageRoutes = App.route('loginPageRoutes');
-  app.get('/login',loginPageRoutes.loginPage);
+  // SigninPageRoutes ===============================================================
+  var signinPageRoutes = App.route('signinPageRoutes');
+  app.get('/signin',signinPageRoutes.loginPage);
+  app.get('/login',signinPageRoutes.loginPage);
   app.post('/login',passport.authenticate('local-login', { 
     successRedirect: '/profile',
     failureRedirect: '/login',
@@ -58,11 +60,10 @@ module.exports = function(app,passport) {
   app.use(express.static(App.appPath('/public')));
 
   // handleErrorRoutes =============================================================
-  
   // 404 must be the last route 
   var handleErrorRoutes = App.route('handleErrorRoutes');
   app.get('*', handleErrorRoutes.handle404);
-
+  
   //test
   app.all('/',function(req, res){
     req.flash('test','worked off maccha');
