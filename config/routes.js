@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 module.exports = function(app,passport) {
 
   app.set('port', (process.env.PORT || 5000));
+  app.set('view engine','jade');
 
   // homePageRoutes ================================================================
   var homePageRoutes = App.route('homePageRoutes');
