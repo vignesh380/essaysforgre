@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 // expose the routes to our app with module.exports
 module.exports = function(app,passport) {
   app.set('port', (process.env.PORT || 5000));
+  app.set('view engine','jade');
 
   // homePageRoutes ================================================================
   var homePageRoutes = App.route('homePageRoutes');

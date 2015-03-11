@@ -16,6 +16,7 @@
     "passport-twitter": "1.0.x",
     "passport-google-oauth": "0.1.x",
     "pause":"0.0.x",
+    "jade":"*",
     
     "connect-flash": "0.1.x",
     "bcrypt-nodejs": "0.x.x",
