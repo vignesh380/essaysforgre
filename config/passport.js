@@ -41,6 +41,7 @@ var LocalStrategy = require('passport-local').Strategy
 
   					newUser.local.email    = email;
   					newUser.local.password = newUser.generateHash(password);
+            newUser.name           = req.body.name;
 
   					//save to DB
 

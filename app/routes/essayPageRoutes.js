@@ -5,7 +5,7 @@ function essayPage(req,res) {
 	console.log("Node app got request to /essay :");
   	//uncomment below later
   	//var essay = essayPoolRoutes.getEssayTopicFromPool(req.body.essay_type);
-  	essayPoolRoutes.getEssayTopicFromPool('argument', function(essay) {
+  	essayPoolRoutes.getEssayTopicFromPool('issue', function(essay) {
   		console.log('got the essay with topic :' + essay.essay_topic + " with id : " + essay.essaypool_id);
   		var minute = 30 * 60 * 1000; //30 min 
   		res.cookie('essaypool_id',essay.essaypool_id,{ maxAge: minute});
