@@ -2,15 +2,15 @@ var mongoose = require('mongoose');
 var random = require('mongoose-simple-random');
 
 var schema = mongoose.Schema({
-	 essay_id: Number
-	,essaypool_id: Number
+	 review_id: Number
+	,essay_id: Number
 	,userid:String
-	,status: Number
-	,essay_content: String
+	,score: Number
+	,comments: String
 });
 
 schema.plugin(random);
 
-var Model = mongoose.model('Essay',schema);
+var Model = mongoose.model('reviewed_essay',schema);
 
 module.exports = Model;

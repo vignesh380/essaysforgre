@@ -26,6 +26,7 @@ module.exports = function(app,passport) {
   // viewEssayRoutes ===============================================================
   var viewEssayRoutes = App.route('viewEssayRoutes');
   app.get('/viewEssay/:id',viewEssayRoutes.viewEssay);
+  app.get('/viewEssay',viewEssayRoutes.getEssayForReview);
 
   // logoutPageRoutes ==============================================================
   var logoutPageRoutes = App.route('logoutPageRoutes');
@@ -37,7 +38,7 @@ module.exports = function(app,passport) {
   app.get('/addEssayTopic',essayPoolRoutes.showPage);
   app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
-  // SigninPageRoutes ===============================================================
+  // SigninPageRoutes ==============================================================
   var signinPageRoutes = App.route('signinPageRoutes');
   app.get('/signin',signinPageRoutes.loginPage);
   app.get('/login',signinPageRoutes.loginPage);
@@ -55,6 +56,10 @@ module.exports = function(app,passport) {
     failureRedirect: '/signup',
     failureFlash: true })
   );
+
+  // EvaluateEssayScoreRoutes ======================================================
+  var evaluateEssayRoutes = App.route('evaluateEssayRoutes');
+  app.post('/evaluateEssay',evaluateEssayRoutes.evaluateEssay);
 
   // Public Folder =================================================================
   app.use(express.static(App.appPath('/public')));

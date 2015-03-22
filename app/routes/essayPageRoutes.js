@@ -1,5 +1,6 @@
 var essayPoolRoutes = App.route('essayPoolRoutes');
 var EssayModel = App.model('essay');
+var UserRoutes = App.route('userProfilePageRoutes');
 
 function essayPage(req,res) {
 	console.log("Node app got request to /essay :");
@@ -16,6 +17,10 @@ function essayPage(req,res) {
 }
 
 function submitEssay(req,res) {
+
+	//first decrease the coins of the the user
+	UserRoutes.decrementUserCoins(req,res);
+	//now push the essay to the DB
 	console.log('pushing to db with user id:' + req.user.local.email );
 	EssayModel.findOne({}).sort('-essay_id').exec(function (err, result) {	
 		if (err) {
@@ -26,7 +31,7 @@ function submitEssay(req,res) {
 				 essay_id:result.essay_id + 1
 				,essaypool_id:req.cookies.essaypool_id
 				,userid: req.user.local.email
-				,status: 'NR'
+				,status: 0
 				,essay_content: req.body.essay_content
 			});		
 			} else { 
@@ -34,7 +39,7 @@ function submitEssay(req,res) {
 				 essay_id: 0
 				,essaypool_id:req.cookies.essaypool_id
 				,userid: req.user.local.email
-				,status: 'NR'
+				,status: 0
 				,essay_content: req.body.essay_content
 			});			
 			} 
