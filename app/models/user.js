@@ -29,7 +29,8 @@ var userSchema = mongoose.Schema({
 		email		: String,
 		name 		: String
 	},
-	name            : String
+	name            : String,
+	coins 			: Number
 });
 
 
