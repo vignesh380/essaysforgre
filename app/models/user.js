@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
+var random   = require('mongoose-simple-random');
 
 //define the schema for user model 
 
@@ -30,9 +31,12 @@ var userSchema = mongoose.Schema({
 		name 		: String
 	},
 	name            : String,
-	coins 			: Number
+	coins 			: Number,
+	userName    	: String,
 });
 
+// plugin for random record 
+userSchema.plugin(random);
 
 // methods ========================================
 
