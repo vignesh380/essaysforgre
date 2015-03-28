@@ -1,5 +1,12 @@
 var EssayPool = App.model('essayPoolModel');
 var latestID = 0 ;
+
+/**{app.routes.essayPoolRoutes.addToEssayPool
+ * :[POST]} <br/> Method to add an essay topic to the essay_pool table
+ * @exports addToEssayPool
+ * @param {string} reqest 
+ * @param {string} response 
+ */
 function addToEssayPool(req,res) {
 
 	EssayPool.findOne({}).sort('-essaypool_id').exec(function (err, result) {
@@ -31,12 +38,24 @@ function addToEssayPool(req,res) {
 	});	
 }
 
-function showPage(req,res){
+/**{app.routes.essayPoolRoutes.essayPoolPage
+ * :[GET]} <br/><br/>  Method to render the essayPoolPage
+ * @exports essayPoolPage
+ * @param {object} reqest 
+ * @param {object} response 
+ */
+function essayPoolPage(req,res){
     console.log("Node app got request to /addEssayTopic :");
   res.sendFile('addEssayTopic.html', { root: 'public' }); 
 
 }
 
+/**{app.routes.essayPoolRoutes.getEssayTopicFromPool
+ * :[internal_method]}  <br/><br/> Method to get a random essay topic from the essay_pool table
+ * @exports getEssayTopicFromPool
+ * @param {string} essay Type {issue or argument} 
+ * @param {function} callback after retrieving the essay topic
+ */
 function getEssayTopicFromPool(essay_type , callback) {
 	EssayPool.findOneRandom({"essay_type" : essay_type} , function(error, result) {
 		if(error) {
@@ -48,5 +67,5 @@ function getEssayTopicFromPool(essay_type , callback) {
 }
 
 exports.add = addToEssayPool;
-exports.showPage = showPage;
+exports.essayPoolPage = essayPoolPage;
 exports.getEssayTopicFromPool = getEssayTopicFromPool;

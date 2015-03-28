@@ -1,5 +1,12 @@
 var User = App.model('user');
 
+/**{app.routes.userProfilePageRoutes.homePage
+ * :[POST]} <br/> Method to render the profile page upon sucessful login.
+ * @exports userProfilePage
+ * @param {object} reqest 
+ * @param {object} response 
+ */
+
 function userProfilePage(req,res){
   console.log("got post request from login page");
   User.findOne({'local.email' : req.user.local.email}, function(err, result) {
@@ -11,6 +18,13 @@ function userProfilePage(req,res){
   				} 
   			});
 }
+
+/**{app.routes.userProfilePageRoutes.decrementUserCoins
+ * :[internal_method]} <br/> Method to decrement the user's coins after user submits an essay.
+ * @exports decrementUserCoins
+ * @param {object} reqest 
+ * @param {object} response 
+ */
 
 function decrementUserCoins(req,res){
   User.findOne({'local.email' : req.user.local.email}, function(err, result) {
@@ -27,6 +41,13 @@ function decrementUserCoins(req,res){
           } 
         });
 }
+
+/**{app.routes.userProfilePageRoutes.incrementUserCoins
+ * :[internal_method]} <br/> Method to increment the user's coins after user rewiews the essay.
+ * @exports incrementUserCoins
+ * @param {object} reqest 
+ * @param {object} response 
+ */
 
 function incrementUserCoins(req,res){
   User.findOne({'local.email' : req.user.local.email}, function(err, result) {

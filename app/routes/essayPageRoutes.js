@@ -2,10 +2,18 @@ var essayPoolRoutes = App.route('essayPoolRoutes');
 var EssayModel = App.model('essay');
 var UserRoutes = App.route('userProfilePageRoutes');
 
+
+/**{app.routes.essayPageRoutes.essayPage
+ * :[GET]} <br/><br/> Method to render the essayPage
+ * it calls {@link essayPoolRoutes}.getEssayTopicFromPool() to get an essaytopic.
+ * the cookie and timer is set for 30 min for the test time .
+ * @exports essayPage
+ * @param {object} reqest 
+ * @param {object} response 
+ */
 function essayPage(req,res) {
 	console.log("Node app got request to /essay :");
   	//uncomment below later
-  	//var essay = essayPoolRoutes.getEssayTopicFromPool(req.body.essay_type);
   	essayPoolRoutes.getEssayTopicFromPool('issue', function(essay) {
   		console.log('got the essay with topic :' + essay.essay_topic + " with id : " + essay.essaypool_id);
   		var minute = 30 * 60 * 1000; //30 min 
@@ -16,6 +24,14 @@ function essayPage(req,res) {
   	}); 	
 }
 
+/**{app.routes.essayPageRoutes.submitEssay 
+ * :[POST]} <br/><br/> Method to submit the essay to the database
+ * it calls {@link UserRoutes}.decrementUserCoins() to decrement that users's Coin.
+ * Next the essay is pushed to the database 
+ * @exports submitEssay
+ * @param {object} reqest 
+ * @param {object} response 
+ */
 function submitEssay(req,res) {
 
 	//first decrease the coins of the the user
