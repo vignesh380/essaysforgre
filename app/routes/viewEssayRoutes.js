@@ -5,8 +5,8 @@ function viewEssay(req,res){
   var handleErrorRoutes = App.route('handleErrorRoutes');
   var id = req.params.id;
   if(id < 6) { 
-  path = '/essayPages/essay'+id+'.html';
-  console.log("Node app got request to /viewEssay/"+id);
+  path = 'reviewEssay.html';
+  console.log("Node app got request to /viewEssay");
   console.log("page served is " + path);
   res.sendFile(path, { root: 'public' });
   }else{
@@ -22,14 +22,7 @@ function getEssayForReview(req,res) {
 //review count < 2
    //EssayModel.findOneRandom({coins:{$gte : 0}}, function(error, result) {
 
-    EssayModel.findOneRandom({status : { $gt: 0, $lt: 2},
-      userid : {$ne : req.user.local.email}}
-      //)
-    //.where('status').gt(0).lt(2)
-    //.where('userid').notequal(req.user.local.email)
-    //.exec( 
-      , 
-      function(error, result) {
+    EssayModel.findOneRandom({},function(error, result) {
     if(error) {
       res.status(422).send('Problem: ' + err.message );
     } else if(result){
@@ -37,9 +30,10 @@ function getEssayForReview(req,res) {
       var minute = 60 * 1000; //30 min 
       res.cookie('essay_id',result.essay_id,{ maxAge: minute});
       //callback(result); 
-      res.sendFile('evaluateEssayTemp.html', { root: 'public' });
+      res.render('reviewEssay', {essayContent:result.essay_content}); 
+      //res.sendFile('reviewEssay.html', { root: 'public' });
     } else {
-      res.status(200).send('A Test case where the coin is 0. will not happen in live mostly :P ');
+      res.status(200).send('A Test case where the coin or no essays to be reviewed is 0. will not happen in live mostly :P ');
     }
   });
 }

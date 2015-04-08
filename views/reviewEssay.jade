@@ -1,0 +1,85 @@
+doctype html.no-js(lang='en')
+head
+    meta(charset='UTF-8')
+    | &#x9;&#x9;
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    |  
+    | &#x9;&#x9;
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |  
+    | &#x9;&#x9;
+    title Blueprint: Split Layout
+    | &#x9;&#x9;
+    meta(name='description', content='Blueprint: Split Layout')
+    | &#x9;&#x9;
+    meta(name='keywords', content='website template, layout, css3, transition, effect, split, dual, two sides, portfolio')
+    | &#x9;&#x9;
+    meta(name='author', content='Codrops')
+    | &#x9;&#x9;
+    link(rel='shortcut icon', href='../favicon.ico')
+    | &#x9;&#x9;
+    link(rel='stylesheet', type='text/css', href='css/reviewEssay_demo.css')
+    | &#x9;&#x9;
+    link(rel='stylesheet', type='text/css', href='css/reviewEssay_component.css')
+    | &#x9;&#x9;
+    script(src='js/reviewEssay_modernizr.custom.js')
+    | &#x9;
+  body
+    .container
+      #splitlayout.splitlayout
+        .intro
+          .side.side-left
+            header.codropsheader.clearfix
+              span Essays for GRE 
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              h1 Split Layout
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              nav
+                a.bp-icon.bp-icon-prev(href='http://tympanus.net/Blueprints/OnScrollEffectLayout/', data-info='Go to Profile Page')
+                  span Go to Profile Page
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            .intro-content
+              h1
+                span Argument Essay
+                span Status
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            .overlay
+          | &#x9;&#x9;&#x9;&#x9;&#x9;
+          .side.side-right
+            .intro-content
+              h1
+                span Issue Essay
+                span Status
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+            .overlay
+        // /intro
+        #first.page.page-left
+          .page-inner
+            button(onclick="something()") Click
+            button(onclick='reject()') Reject
+            section
+              h2 Web Design
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              p #{essayContent}
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+        .page.page-right
+          .page-inner
+            section
+              h2 Web Development
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              p #{essayContent}
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+        a.back.back-right(href='/profile', title='back to intro') &rarr;
+        | &#x9;&#x9;&#x9;&#x9;
+        a.back.back-left(href='/profile', title='back to intro') &larr;
+      // /splitlayout
+    // /container
+    script.
+      var something = function()
+      {
+      console.log("Heyyyyyyyy");
+      }
+    script(src='js/reviewEssay_classie.js')
+    | &#x9;&#x9;
+    script(src='js/reviewEssay_cbpSplitLayout.js')
+    
