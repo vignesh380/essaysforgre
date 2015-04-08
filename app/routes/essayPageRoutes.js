@@ -20,7 +20,9 @@ function essayPage(req,res) {
   		res.cookie('essaypool_id',essay.essaypool_id,{ maxAge: minute});
   		//update the essaypage with the recently got essaytopic 
   		//addlines here
-  		res.sendFile('essayPage.html', { root: 'public' }); 
+  		//res.sendFile('essayPage.html', { root: 'public' }); 
+  		res.render('essayPage', { essay_topic : essay.essay_topic}); 
+  		
   	}); 	
 }
 
