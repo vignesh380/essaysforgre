@@ -1,0 +1,57 @@
+doctype html(lang='en')
+head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Essay
+    // Bootstrap core CSS
+    link(rel='stylesheet', type='text/css', href='/css/bootstrap.min.css')
+    // Custom styles for the essay grids
+    link(rel='stylesheet', type='text/css', href='/css/grid.css')
+    // Custom styles for this template
+    link(rel='stylesheet', type='text/css', href='/css/essayPage.css')
+|     
+body
+  // Fixed navbar
+  form(method='POST', action='/essay')
+    .row.con
+      nav.navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+              span.sr-only Toggle navigation
+              |               
+              span.icon-bar
+              |               
+              span.icon-bar
+              |               
+              span.icon-bar
+            |             
+            a.navbar-brand EssaysForGRE
+          |           
+          #navbar.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li
+                a.align-right(type='submit')
+                  button.btn-primary(type='submit') Submit the essay
+              |               
+              li
+                a.align-right Already attempted this essay 
+    |       
+    .row.con
+    |       
+    .row.con
+      .col-xs-3.col-sm-3.col-md-3.col-lg-3.fixed(word-wrap='break-word')
+        b Fixed Content
+        |           
+        br
+        br
+        |           
+        p
+        | #{essay_topic}
+      |         
+      .col-xs-9.col-sm-9.col-md-9.col-lg-9.scrollit
+        textarea(name='essay_content', spellcheck='false')

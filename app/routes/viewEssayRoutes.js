@@ -1,6 +1,15 @@
 var EssayModel = App.model('essay');
+var UserModel = App.model('user');
+var reviewEssayRoutes = App.route('reviewEssayRoutes');
 
-function viewEssay(req,res){
+
+/**{app.routes.viewEssayRoutes.tempViewEssay
+ * :[GET]} <br/><br/> *!!TEMP METHOD* Method to view an essay for review.
+ * @param {object} reqest 
+ * @param {object} response 
+ * @exports tempViewEssay
+ */
+function tempViewEssay(req,res){
 
   var handleErrorRoutes = App.route('handleErrorRoutes');
   var id = req.params.id;
@@ -14,29 +23,20 @@ function viewEssay(req,res){
   }
 }
 
-function getEssayForReview(req,res) {
+  /**{app.routes.viewEssayRoutes.viewEssay
+ * :[GET]} <br/><br/> Method to view an essay for review.
+ * @param {object} reqest 
+ * @param {object} response 
+ * @exports viewEssay
+ */
+function viewEssay(req,res){
+//as of now a placeholder for the main code to be writen here
 
-//nested query select * from essay where (select * from users where coins > 0);
+reviewEssayRoutes.getEssayForReview(req,res);
 
-//must take care not to evaluate user's ownessay
-//review count < 2
-   //EssayModel.findOneRandom({coins:{$gte : 0}}, function(error, result) {
-
-    EssayModel.findOneRandom({},function(error, result) {
-    if(error) {
-      res.status(422).send('Problem: ' + err.message );
-    } else if(result){
-      console.log("essay got :" + result.essay_content);
-      var minute = 60 * 1000; //30 min 
-      res.cookie('essay_id',result.essay_id,{ maxAge: minute});
-      //callback(result); 
-      res.render('reviewEssay', {essayContent:result.essay_content}); 
-      //res.sendFile('reviewEssay.html', { root: 'public' });
-    } else {
-      res.status(200).send('A Test case where the coin or no essays to be reviewed is 0. will not happen in live mostly :P ');
-    }
-  });
 }
 
-exports.getEssayForReview = getEssayForReview;
+
+
 exports.viewEssay = viewEssay;
+exports.viewEssay = tempViewEssay;

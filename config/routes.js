@@ -25,8 +25,10 @@ module.exports = function(app,passport) {
 
   // viewEssayRoutes ===============================================================
   var viewEssayRoutes = App.route('viewEssayRoutes');
-  app.get('/viewEssay/:id',viewEssayRoutes.viewEssay);
-  app.get('/viewEssay',viewEssayRoutes.getEssayForReview);
+ // app.get('/viewEssay/:id',viewEssayRoutes.tempViewEssay);
+  // must change below route once completly implemented
+  var reviewEssayRoutes = App.route('reviewEssayRoutes');
+  app.get('/viewEssay',reviewEssayRoutes.getEssayForReview);
 
   // logoutPageRoutes ==============================================================
   var logoutPageRoutes = App.route('logoutPageRoutes');
@@ -35,7 +37,7 @@ module.exports = function(app,passport) {
 
   // essayPoolRoutes ===============================================================
   var essayPoolRoutes = App.route('essayPoolRoutes');
-  app.get('/addEssayTopic',essayPoolRoutes.showPage);
+  app.get('/addEssayTopic',essayPoolRoutes.essayPoolPage);
   app.post('/submit_to_essayPool',essayPoolRoutes.add);
 
   // SigninPageRoutes ==============================================================
