@@ -55,8 +55,9 @@ head
         // /intro
         #first.page.page-left
           .page-inner
-            button(onclick="something()") Click
-            button(onclick='reject()') Reject
+            button#acceptID Accept
+            button Reject
+            button#c Submit
             section
               h2 Web Design
               | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
@@ -75,9 +76,14 @@ head
       // /splitlayout
     // /container
     script.
-      var something = function()
-      {
-      console.log("Heyyyyyyyy");
+      $('#acceptID').click(function() {
+      $.get('/storeReviewEssay', {foo: 42}, function(result) {
+      }
+      }
+    script.
+      $('#submitID').click(function() {
+      $.get('/evaluateEssay', {foo: 42}, function(result) {
+      }
       }
     script(src='js/reviewEssay_classie.js')
     | &#x9;&#x9;

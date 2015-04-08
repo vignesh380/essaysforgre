@@ -46,7 +46,7 @@
 		}
 		</script>
 
-					 <button onclick="accept()">Accept</button>
+					 <button id = "acceptID">Accept</button>
 					<!-- <button>Reject</button> -->
 
 						<section>
@@ -72,10 +72,13 @@
 		<script src="js/reviewEssay_classie.js"></script>
 		<script src="js/reviewEssay_cbpSplitLayout.js"></script>
 	
-<script>
-		function accept() {
-			alert.show("Hi :)");
-		}
+		<script>
+		
+		$('#acceptID').click(function() {
+     	$.get('/storeReviewEssay', {foo: 42}, function(result) {
+     		console.log('Done macchi :P');
+     	}
+	}
 		</script>
 
 	</body>
