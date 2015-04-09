@@ -24,6 +24,7 @@ head
     | &#x9;&#x9;
     script(src='js/reviewEssay_modernizr.custom.js')
     | &#x9;
+    script(src='/js/reviewEssayCustomJs.js')
   body
     .container
       #splitlayout.splitlayout
@@ -55,9 +56,9 @@ head
         // /intro
         #first.page.page-left
           .page-inner
-            button#acceptID Accept
-            button Reject
-            button#c Submit
+            button#accept1ID Accept1
+            button(onclick='acceptFunction()') Accept
+            button#submitID Submit
             section
               h2 Web Design
               | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
@@ -76,14 +77,20 @@ head
       // /splitlayout
     // /container
     script.
-      $('#acceptID').click(function() {
-      $.get('/storeReviewEssay', {foo: 42}, function(result) {
-      }
+      $('#accept1ID').click(function() {
+      console.log('On click of accept1');
       }
     script.
       $('#submitID').click(function() {
-      $.get('/evaluateEssay', {foo: 42}, function(result) {
+      $.get('/evaluateEssay', , function(result) {
       }
+      }
+    script.
+      function acceptFunction() {
+      $.ajax({url:'/storeReviewEssay'}).done(function() {
+      window.location.href = "/";
+      });
+      console.log('On click of accept');
       }
     script(src='js/reviewEssay_classie.js')
     | &#x9;&#x9;
