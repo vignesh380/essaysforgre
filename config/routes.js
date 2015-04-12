@@ -15,20 +15,24 @@ module.exports = function(app,passport) {
   app.get('/home',homePageRoutes.tempHomePage);
 
   // essayPageRoutes ===============================================================
+  var ensureAuthenticated = App.middleware('ensureAuthenticated');
+  app.all('/app/*',ensureAuthenticated.ensureAuthenticated);
+
+  // essayPageRoutes ===============================================================  
   var essayPageRoutes = App.route('essayPageRoutes');
-  app.get('/essay',essayPageRoutes.essayPage);
-  app.post('/essay',essayPageRoutes.submitEssay);
+  app.get('/app/essay',essayPageRoutes.essayPage);
+  app.post('/app/essay',essayPageRoutes.submitEssay);
 
   // userProfilePageRoutes =========================================================
   var userProfilePageRoutes = App.route('userProfilePageRoutes');
-  app.get('/profile',userProfilePageRoutes.userProfilePage);
+  app.get('/app/profile',userProfilePageRoutes.userProfilePage);
 
   // viewEssayRoutes ===============================================================
   var viewEssayRoutes = App.route('viewEssayRoutes');
  // app.get('/viewEssay/:id',viewEssayRoutes.tempViewEssay);
   // must change below route once completly implemented
   var reviewEssayRoutes = App.route('reviewEssayRoutes');
-  app.get('/viewEssay',reviewEssayRoutes.getEssayForReview);
+  app.get('/app/viewEssay',reviewEssayRoutes.getEssayForReview);
 
   // logoutPageRoutes ==============================================================
   var logoutPageRoutes = App.route('logoutPageRoutes');
@@ -37,15 +41,15 @@ module.exports = function(app,passport) {
 
   // essayPoolRoutes ===============================================================
   var essayPoolRoutes = App.route('essayPoolRoutes');
-  app.get('/addEssayTopic',essayPoolRoutes.essayPoolPage);
-  app.post('/submit_to_essayPool',essayPoolRoutes.add);
+  app.get('/app/addEssayTopic',essayPoolRoutes.essayPoolPage);
+  app.post('/app/submit_to_essayPool',essayPoolRoutes.add);
 
   // SigninPageRoutes ==============================================================
   var signinPageRoutes = App.route('signinPageRoutes');
   app.get('/signin',signinPageRoutes.loginPage);
   app.get('/login',signinPageRoutes.loginPage);
   app.post('/login',passport.authenticate('local-login', { 
-    successRedirect: '/profile',
+    successRedirect: '/app/profile',
     failureRedirect: '/login',
     failureFlash: true })
   );
@@ -54,14 +58,14 @@ module.exports = function(app,passport) {
   var signUpPageRoutes = App.route('signUpPageRoutes');
   app.get('/signup',signUpPageRoutes.signUpPage);
   app.post('/signup',passport.authenticate('local-signup', { 
-    successRedirect: '/profile',
+    successRedirect: '/app/profile',
     failureRedirect: '/signup',
     failureFlash: true })
   );
 
   // EvaluateEssayScoreRoutes ======================================================
   var evaluateEssayRoutes = App.route('evaluateEssayRoutes');
-  app.post('/evaluateEssay',evaluateEssayRoutes.evaluateEssay);
+  app.post('/app/evaluateEssay',evaluateEssayRoutes.evaluateEssay);
 
   // Public Folder =================================================================
   app.use(express.static(App.appPath('/public')));
@@ -69,7 +73,9 @@ module.exports = function(app,passport) {
   // handleErrorRoutes =============================================================
   // 404 must be the last route 
   var handleErrorRoutes = App.route('handleErrorRoutes');
+  app.get('/error/403',handleErrorRoutes.handle403);
   app.get('*', handleErrorRoutes.handle404);
+
   
   //test
   app.all('/',function(req, res){

@@ -12,7 +12,7 @@ var UserRoutes = App.route('userProfilePageRoutes');
  * @param {object} response 
  */
 function essayPage(req,res) {
-	console.log("Node app got request to /essay :");
+	console.log("Node app got request to /app/essay :");
   	//uncomment below later
   	essayPoolRoutes.getEssayTopicFromPool('issue', function(essay) {
   		console.log('got the essay with topic :' + essay.essay_topic + " with id : " + essay.essaypool_id);
@@ -65,7 +65,7 @@ function submitEssay(req,res) {
 				if(err) {
 					res.status(422).send('Problem: ' + err.message );
 				} else {
-					res.status(200).send('Added the essay successfully :D <a href="/profile">go to the profile page </a>');
+					res.status(200).send('Added the essay successfully :D <a href="/app/profile">go to the profile page </a>');
 				}
 			});
 	}

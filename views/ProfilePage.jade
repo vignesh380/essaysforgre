@@ -12,29 +12,29 @@ head
     |         
     title Elevator - Multipurpose Bootstrap Theme
     // Bootstrap Core CSS
-    link(href='bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // Font Awesome CSS
-    link(href='css/Profilepage_font-awesome.min.css', rel='stylesheet')
+    link(href='/css/Profilepage_font-awesome.min.css', rel='stylesheet')
     // Custom CSS
-    link(href='css/Profilepage_animate.css', rel='stylesheet')
+    link(href='/css/Profilepage_animate.css', rel='stylesheet')
     // Custom CSS
-    link(href='css/Profilepage_style.css', rel='stylesheet')
+    link(href='/css/Profilepage_style.css', rel='stylesheet')
     // Custom Fonts
     link(href='http://fonts.googleapis.com/css?family=Lobster', rel='stylesheet', type='text/css')
     // Template js
-    script(src='js/Profilepage_jquery-2.1.1.min.js')
+    script(src='/js/Profilepage_jquery-2.1.1.min.js')
     |         
-    script(src='bootstrap/js/bootstrap.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
     |         
-    script(src='js/Profilepage_jquery.appear.js')
+    script(src='/js/Profilepage_jquery.appear.js')
     |         
-    script(src='js/Profilepage_contact_me.js')
+    script(src='/js/Profilepage_contact_me.js')
     |         
-    script(src='js/Profilepage_jqBootstrapValidation.js')
+    script(src='/js/Profilepage_jqBootstrapValidation.js')
     |         
-    script(src='js/Profilepage_modernizr.custom.js')
+    script(src='/js/Profilepage_modernizr.custom.js')
     |         
-    script(src='js/Profilepage_script.js')
+    script(src='/js/Profilepage_script.js')
     //if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
     |             
@@ -56,14 +56,14 @@ head
         .row
           .col-md-3
             .menu-item.blue
-              a(href='/essay', data-toggle='modal')
+              a(href='/app/essay', data-toggle='modal')
                 i.fa.fa-magic
                 |                                 
                 p Write new essay
             |                         
             |                         
             .menu-item.green
-              a(href='/viewEssay', data-toggle='modal')
+              a(href='/app/viewEssay', data-toggle='modal')
                 i.fa.fa-file-photo-o
                 |                                 
                 p Review an essay

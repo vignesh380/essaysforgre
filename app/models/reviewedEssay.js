@@ -5,6 +5,7 @@ var schema = mongoose.Schema({
 	 review_id: Number
 	,essay_id: Number
 	,userid:String
+	,status:String
 	,score: Number
 	,comments: String
 });
