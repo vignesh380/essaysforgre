@@ -14,7 +14,7 @@ function userProfilePage(req,res){
   					return done(err);
   				}
   				if(result) {
-  					res.render('ProfilePage', { user:result.name}); 
+  					res.render('ProfilePage', { coin:result.coins, user:result.name}); 
   				} 
   			});
 }
