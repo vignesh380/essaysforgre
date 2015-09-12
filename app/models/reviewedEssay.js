@@ -7,6 +7,7 @@ var schema = mongoose.Schema({
 	,userid:String
 	,score: Number
 	,comments: String
+	,status : Number
 });
 
 schema.plugin(random);

@@ -29,6 +29,7 @@ module.exports = function(app,passport) {
   // must change below route once completly implemented
   var reviewEssayRoutes = App.route('reviewEssayRoutes');
   app.get('/viewEssay',reviewEssayRoutes.getEssayForReview);
+  app.get('/storeReviewEssay',reviewEssayRoutes.addReview);
 
   // logoutPageRoutes ==============================================================
   var logoutPageRoutes = App.route('logoutPageRoutes');
@@ -62,7 +63,7 @@ module.exports = function(app,passport) {
   // EvaluateEssayScoreRoutes ======================================================
   var evaluateEssayRoutes = App.route('evaluateEssayRoutes');
   app.post('/evaluateEssay',evaluateEssayRoutes.evaluateEssay);
-
+  
   // Public Folder =================================================================
   app.use(express.static(App.appPath('/public')));
 

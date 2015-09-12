@@ -35,7 +35,7 @@ function evaluateEssay(req,res) {
    questions[i++] = req.body.q6.value;
    findScore(questions,function(score) {
    		updateEssayStatus(req,res);
-   		addReview(req,res,score);
+   		updateReview(req,res,score);
    });
   }
 
@@ -74,7 +74,7 @@ function updateEssayStatus(req,res) {
  * @param {Number} score
  */
 
-function addReview(req,res,score){
+function updateReview(req,res,score){
 	ReviewEssayModel.findOne({}).sort('-review_id').exec(function (err, result) {	
 		if (err) {
 			res.status(422).send('addRewiew:EssayModel:Problem: ' + err.message );
@@ -110,3 +110,4 @@ function addReview(req,res,score){
 }
 
 exports.evaluateEssay = evaluateEssay;
+exports.updateEssayStatus = updateEssayStatus;
