@@ -14,8 +14,8 @@ function tempViewEssay(req,res){
   var handleErrorRoutes = App.route('handleErrorRoutes');
   var id = req.params.id;
   if(id < 6) { 
-  path = '/essayPages/essay'+id+'.html';
-  console.log("Node app got request to /viewEssay/"+id);
+  path = 'reviewEssay.html';
+  console.log("Node app got request to /viewEssay");
   console.log("page served is " + path);
   res.sendFile(path, { root: 'public' });
   }else{
@@ -35,6 +35,8 @@ function viewEssay(req,res){
 reviewEssayRoutes.getEssayForReview(req,res);
 
 }
+
+
 
 exports.viewEssay = viewEssay;
 exports.viewEssay = tempViewEssay;

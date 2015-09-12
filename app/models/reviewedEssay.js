@@ -8,6 +8,7 @@ var schema = mongoose.Schema({
 	,status:String
 	,score: Number
 	,comments: String
+	,status : Number
 });
 
 schema.plugin(random);
