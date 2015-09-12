@@ -9,6 +9,12 @@ module.exports = function(app,passport) {
   app.set('port', (process.env.PORT || 5000));
   app.set('view engine','jade');
 
+  //test routes
+
+  app.get('/index',function(req,res){
+    res.sendFile('index.html', { root: 'public' });
+  });
+
   // homePageRoutes ================================================================
   var homePageRoutes = App.route('homePageRoutes');
   app.get('/', homePageRoutes.homePage);
@@ -16,16 +22,25 @@ module.exports = function(app,passport) {
 
   // essayPageRoutes ===============================================================
   var ensureAuthenticated = App.middleware('ensureAuthenticated');
-  app.all('/app/*',ensureAuthenticated.ensureAuthenticated);
+  // app.all('/app/*',ensureAuthenticated.ensureAuthenticated);
 
-  // essayPageRoutes ===============================================================  
+  // essayPageRoutes ===============================================================
   var essayPageRoutes = App.route('essayPageRoutes');
   app.get('/app/essay',essayPageRoutes.essayPage);
   app.post('/app/essay',essayPageRoutes.submitEssay);
 
+  // essayReviewPage ===============================================================
+  app.get('/app/review', function(req,res){
+     res.sendFile('sliders.html', { root: 'public' });
+  });
+
   // userProfilePageRoutes =========================================================
   var userProfilePageRoutes = App.route('userProfilePageRoutes');
-  app.get('/app/profile',userProfilePageRoutes.userProfilePage);
+  app.get('/app/profile', function(req,res) {
+    res.sendFile('ProfilePage.html', { root : 'public' });
+  });
+  //  TODO uncomment the below line later.
+  //app.get('/app/profile',userProfilePageRoutes.userProfilePage);
 
   // viewEssayRoutes ===============================================================
   var viewEssayRoutes = App.route('viewEssayRoutes');
@@ -48,7 +63,7 @@ module.exports = function(app,passport) {
   var signinPageRoutes = App.route('signinPageRoutes');
   app.get('/signin',signinPageRoutes.loginPage);
   app.get('/login',signinPageRoutes.loginPage);
-  app.post('/login',passport.authenticate('local-login', { 
+  app.post('/login',passport.authenticate('local-login', {
     successRedirect: '/app/profile',
     failureRedirect: '/login',
     failureFlash: true })
@@ -57,7 +72,7 @@ module.exports = function(app,passport) {
   // signUpPageRoutes ==============================================================
   var signUpPageRoutes = App.route('signUpPageRoutes');
   app.get('/signup',signUpPageRoutes.signUpPage);
-  app.post('/signup',passport.authenticate('local-signup', { 
+  app.post('/signup',passport.authenticate('local-signup', {
     successRedirect: '/app/profile',
     failureRedirect: '/signup',
     failureFlash: true })
@@ -71,12 +86,12 @@ module.exports = function(app,passport) {
   app.use(express.static(App.appPath('/public')));
 
   // handleErrorRoutes =============================================================
-  // 404 must be the last route 
+  // 404 must be the last route
   var handleErrorRoutes = App.route('handleErrorRoutes');
   app.get('/error/403',handleErrorRoutes.handle403);
   app.get('*', handleErrorRoutes.handle404);
 
-  
+
   //test
   app.all('/',function(req, res){
     req.flash('test','worked off maccha');

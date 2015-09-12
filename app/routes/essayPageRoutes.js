@@ -13,15 +13,16 @@ var UserRoutes = App.route('userProfilePageRoutes');
  */
 function essayPage(req,res) {
 	console.log("Node app got request to /app/essay :");
+	res.sendFile('essayPage.html', { root: 'public' });
   	//uncomment below later
-  	essayPoolRoutes.getEssayTopicFromPool('issue', function(essay) {
+  	essayPoolRoutes.getEssayTopicFromPool(req.essayType, function(essay) {
   		console.log('got the essay with topic :' + essay.essay_topic + " with id : " + essay.essaypool_id);
   		var minute = 30 * 60 * 1000; //30 min 
   		res.cookie('essaypool_id',essay.essaypool_id,{ maxAge: minute});
   		//update the essaypage with the recently got essaytopic 
   		//addlines here
   		//res.sendFile('essayPage.html', { root: 'public' }); 
-  		res.render('essayPage', { essay_topic : essay.essay_topic}); 
+  		res.render('essayPage', {essay_topic : essay.essay_topic}); 
   		
   	}); 	
 }

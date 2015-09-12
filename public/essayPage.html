@@ -11,23 +11,36 @@
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" type="text/css"href="/css/bootstrap.min.css">
 <!-- Custom styles for the essay grids -->
-<link rel="stylesheet" type="text/css" href="/css/grid.css">
+<!-- <link rel="stylesheet" type="text/css" href="/css/grid.css"> -->
 <!-- Custom styles for this template -->
 <link rel="stylesheet" type="text/css" href="/css/essayPage.css">
+<link rel="stylesheet" type="text/css" href="/css/essayPageHoverNormalize.css" />
+<link rel="stylesheet" type="text/css" href="/css/essayPageHover.css" />
+<link rel="stylesheet" type="text/css" href="/css/essayPageHoverPage.css" /> <!-- -->
+<script src="/js/modernizr.custom.js"></script>
+<!-- styles for hover -->
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-    </head>
-
+</head>
     <body>
-      <!-- Fixed navbar -->
+      <div id="overlay" class="overlay overlay-corner">
+      <button type="button"  id="overlay-close" class="overlay-close">Close</button>
+      <nav>
+        <ul>
+          <li><a href="#">Argument</a></li>
+          <li><a href="#">Issue</a></li>
+        </ul>
+      </nav>
+    </div>
+      <div id="essayBody">
       <form method="POST" action="/app/essay" >
       <div class="row con">
       <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div  class="container" >
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -49,6 +62,7 @@
       <div class="row con"></div>
       <div class="row con">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 fixed"  word-wrap="break-word">
+        <p><button id="trigger-overlay" type="button">Open Overlay</button></p>
           <b>Essay topic:</b>
           <br/><br/>
           <p>Lorem ipsum dolor sit amet, meis eruditi mea te, no quo wisi choro, ad placerat invenire definitiones mei. Purto vero illud at eum, eos magna altera asdf asdf  assentior ut, sea doctus periculis te. Eum graece dictas at. In habeo labore salutatus eam, et autem idque abhorreant his.</p>
@@ -59,7 +73,58 @@
       </div>
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <script src="/js/ie10-viewport-bug-workaround.js"></script>
-
     </form>
+    </div>
   </body>
-</html>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/classie.js"></script>
+    <script type="text/javascript">
+      function toggleOverlay() {
+    if( classie.has( overlay, 'open' ) ) {
+      console.log("overlay was opn, closing it now");
+      classie.remove( overlay, 'open' );
+      classie.add( overlay, 'close' );
+      $('#essayBody').show();
+      var onEndTransitionFn = function( ev ) {
+        if( support.transitions ) {
+          if( ev.propertyName !== 'visibility' ) return;
+          this.removeEventListener( transEndEventName, onEndTransitionFn );
+        }
+        classie.remove( overlay, 'close' );
+      };
+      if( support.transitions ) {
+        overlay.addEventListener( transEndEventName, onEndTransitionFn );
+      }
+      else {
+        onEndTransitionFn();
+      }
+    }
+    else if( !classie.has( overlay, 'close' ) ) {
+      console.log("was closed, opening now");
+      $('#essayBody').hide();
+      classie.add( overlay, 'open' );
+
+    }
+  }
+        $(document).ready(function() {
+          console.log("loaded the page");
+            var triggerBttn = document.getElementById( 'trigger-overlay' ),
+    overlay = document.getElementById( 'overlay' ),
+    closeBttn = document.getElementById( 'overlay-close' );
+    console.log(triggerBttn);
+    console.log(overlay);
+    console.log(closeBttn);
+    transEndEventNames = {
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'oTransitionEnd',
+      'msTransition': 'MSTransitionEnd',
+      'transition': 'transitionend'
+    },
+    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+    support = { transitions : Modernizr.csstransitions };
+  triggerBttn.addEventListener( 'click', toggleOverlay );
+  closeBttn.addEventListener( 'click', toggleOverlay );
+        });
+    </script>
+    </html>

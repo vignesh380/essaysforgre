@@ -1,34 +1,30 @@
-/*    height: 100%;
-    top: 0;
-    bottom: 0;
-    border-radius: 0;
-    margin: 0;
-    background: #1e1e1e;
-    border: 0;
-    outline: 0;
-    overflow: hidden;
+/*grid.css contents */
+
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
 }
 
-.codebox,textarea {
-    padding: 15px 25px; 
-    width: 100%;
-    color: #fff;
-    background: transparent;
-    height: 100%;
-    overflow: scroll;
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
-.col-md-3.acc {
-	height: 100%;
-	top: 0;
-	bottom: 0;
-	border-radius: 0;
-	padding: 0;
-	margin: 0;
-	background: #232323;
-	vertical-align: middle;
-}
-*/
+/*essay.css contents */
 
 .con{
     display: -webkit-flex;
