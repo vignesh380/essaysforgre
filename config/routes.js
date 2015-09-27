@@ -9,10 +9,13 @@ module.exports = function(app,passport) {
   app.set('port', (process.env.PORT || 5000));
   app.set('view engine','jade');
 
-  //test routes
-
+  //test routes ====================================================================
   app.get('/index',function(req,res){
     res.sendFile('index.html', { root: 'public' });
+  });
+
+  app.get('/exp/reviewEssay',function(req,res){
+    res.sendFile('EssayFormIndex.html', { root: 'public' });
   });
 
   // homePageRoutes ================================================================

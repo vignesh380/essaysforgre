@@ -6,7 +6,12 @@
   <meta name="description" content=""/>
   <meta name="author" content=""/>
   <!-- Bootstrap Core CSS-->
-  <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/signupTemp.css">
+  <link rel="stylesheet" type="text/css" href="/css/essayPageHoverNormalize.css" />
+  <link rel="stylesheet" type="text/css" href="/css/essayPageHover.css" />
+  <link rel="stylesheet" type="text/css" href="/css/essayPageHoverPage.css" />
+  <script src="/js/modernizr.custom.js"></script>
   <!-- Font Awesome CSS-->
   <link href="/css/Profilepage_font-awesome.min.css" rel="stylesheet"/>
   <!-- Custom CSS-->
@@ -16,11 +21,6 @@
   <!-- Custom Fonts-->
   <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"/>
   <!-- Template js-->
-  <link rel="stylesheet" type="text/css" href="/css/signupTemp.css">
-  <link rel="stylesheet" type="text/css" href="/css/essayPageHoverNormalize.css" />
-  <link rel="stylesheet" type="text/css" href="/css/essayPageHover.css" />
-  <link rel="stylesheet" type="text/css" href="/css/essayPageHoverPage.css" />
-  <script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
   <!--Logout Button-->
@@ -46,9 +46,9 @@
       <div class="row">
         <div class="col-md-4">
           <div class="menu-item light-orange">
-            <a href="" data-toggle="modal">
+            <a href="" data-toggle="modal" id="trigger-overlay">
               <i class="fa fa-magic"></i>
-              <p id="trigger-overlay">Write new essay</p>
+              <p>Write new essay</p>
             </a>
           </div>
           <br>
@@ -57,7 +57,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="menu-item blue"><a href="/viewEssay" data-toggle="modal"><i class="fa fa-file-photo-o"></i>
+            <div class="menu-item blue"><a href="/app/viewEssay" data-toggle="modal"><i class="fa fa-file-photo-o"></i>
               <p>Review an essay</p></a></div>
             <br>
             <div class="menu-item light-red responsive-2"><a href="#contact-modal" data-toggle="modal"><i class="fa fa-envelope-o"></i>
@@ -78,20 +78,21 @@
     <button type="button" class="overlay-close">Close</button>
     <nav>
       <ul>
-        <li><a href="#">Argument Essay</a></li>
-        <li><a href="#">Issue Essay</a></li>
+        <li><a href="/app/essay?essayType=argument">Argument Essay</a></li>
+        <li><a href="/app/essay?essayType=issue">Issue Essay</a></li>
       </ul>
     </nav>
   </div>
-  <script src="/js/Profilepage_jquery-2.1.1.min.js"></script>
+  <script src="/js/classie.js"></script>
+  <script src="/js/essayPageHover.js"></script>
+  <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/Profilepage_jquery.appear.js"></script>
+<!--  <script src="/js/Profilepage_jquery.appear.js"></script>
+  <script src="/js/Profilepage_jquery-2.1.1.min.js"></script>
   <script src="/js/Profilepage_contact_me.js"></script>
   <script src="/js/Profilepage_jqBootstrapValidation.js"></script>
   <script src="/js/Profilepage_modernizr.custom.js"></script>
-  <script src="/js/Profilepage_script.js"></script>
-  <script src="/js/classie.js"></script>
-  <script src="/js/essayPageHover.js"></script>
+  <script src="/js/Profilepage_script.js"></script>-->
   <!--if lt IE 9-->
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>

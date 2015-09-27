@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Score the Essay</title>
+		<meta name="description" content="Natural Language Form with custom text input and drop-down lists" />
+		<meta name="keywords" content="Natural Language UI, sentence form, text input, contenteditable, html5, css3, jquery" />
+		<meta name="author" content="Codrops" /> 
+		<link rel="stylesheet" type="text/css" href="/css/EssayFormDefault.css" />
+		<link rel="stylesheet" type="text/css" href="/css/EssayFormComponent.css" />
+		<script src="/js/modernizr.custom.js" ></script>
+	</head>
+	<body class="nl-blurred">
+		<div class="container demo-1">
+		
+			<header>
+				<h1>Score the Essay<span>with custom input elements</span></h1>	
+			</header>
+			<div class="main clearfix">
+				<form id="nl-form" class="nl-form">
+					I feel the essay was organised
+					<select>
+						<option value="1" selected>very well</option>
+						<option value="2">in a decent manner</option>
+						<option value="3">very badly</option>
+						<option value="4">hmmm .... gebrish</option>
+					</select>
+					<br />with
+					<select>
+						<option value="1" selected>lot of spelling mistakes</option>
+						<option value="2">few swpelling mistakes</option>
+						<option value="3">one or 2 spelling mistakes</option>
+						<option value="4">no mistakes at all</option>
+					</select>
+					<br />
+					The essay 
+					<select>
+						<option value="1" selected>was well written</option>
+					 	<option value="1">had occasional grammatical mistakes</option>
+					 	<option value="2">had few-many grammatical mistakes</option>
+					 	<option value="3">had too many mistakes</option>
+					</select>
+					<br />
+					Well the comments i want to give the writter is : <input type="text" value="" placeholder="comments" data-subline="For example: <em>Los Angeles</em> or <em>New York</em>"/>
+					<div class="nl-submit-wrap">
+						<button class="nl-submit" type="submit">Submit my scoring</button>
+					</div>
+					<div class="nl-overlay"></div>
+				</form>
+			</div>
+		</div><!-- /container -->
+		<script src="/js/EssayFormNlform.js"></script>
+		<script>
+			var nlform = new NLForm( document.getElementById( 'nl-form' ) );
+		</script>
+	</body>
+</html>
