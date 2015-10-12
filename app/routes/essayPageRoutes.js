@@ -29,6 +29,18 @@ function essayPage(req,res) {
   	}); 	
 }
 
+function instructionPage(req,res){
+	if (req.query.essayType == 'issue') {
+	
+		res.sendFile('instructions.html',{root : 'public'});
+
+	}
+	else{
+		res.sendFile('instructions-arg.html',{root : 'public'});	
+	}
+	
+}
+
 /**{app.routes.essayPageRoutes.submitEssay 
  * :[POST]} <br/><br/> Method to submit the essay to the database
  * it calls {@link UserRoutes}.decrementUserCoins() to decrement that users's Coin.
@@ -78,3 +90,4 @@ function submitEssay(req,res) {
 
 exports.essayPage = essayPage;
 exports.submitEssay = submitEssay;
+exports.instructionPage = instructionPage;

@@ -70,4 +70,4 @@ App.require("config/routes")(App.app , passport);
 
 // Database configuration ==============================================================
 App.require('config/database')
-('mongodb://liveconnect:liveconnect@54.145.121.171:31531/heroku_app32320230'); 
+('mongodb://liveconnect:liveconnect@ds031531.mongolab.com:31531/heroku_app32320230'); 

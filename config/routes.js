@@ -10,7 +10,7 @@ module.exports = function(app,passport) {
   app.set('view engine','jade');
 
   //test routes ====================================================================
-  app.get('/index',function(req,res){
+  app.get('/exp/index',function(req,res){
     res.sendFile('index.html', { root: 'public' });
   });
 
@@ -29,7 +29,8 @@ module.exports = function(app,passport) {
 
   // essayPageRoutes ===============================================================
   var essayPageRoutes = App.route('essayPageRoutes');
-  app.get('/app/essay',essayPageRoutes.essayPage);
+  app.get('/app/essay',essayPageRoutes.instructionPage);
+  app.get('/app/writeEssay',essayPageRoutes.essayPage);
   app.post('/app/essay',essayPageRoutes.submitEssay);
 
   // essayReviewPage ===============================================================
@@ -43,8 +44,8 @@ module.exports = function(app,passport) {
     res.sendFile('ProfilePage.html', { root : 'public' });
   });
   //  TODO uncomment the below line later.
-  //app.get('/app/profile',userProfilePageRoutes.userProfilePage);
-
+/*  app.get('/app/profile',userProfilePageRoutes.userProfilePage);
+*/
   // viewEssayRoutes ===============================================================
   var viewEssayRoutes = App.route('viewEssayRoutes');
  // app.get('/viewEssay/:id',viewEssayRoutes.tempViewEssay);
@@ -71,6 +72,10 @@ module.exports = function(app,passport) {
     failureRedirect: '/login',
     failureFlash: true })
   );
+/*app.post('/login', function (req,res) { 
+  res.sendFile('ProfilePage.html',{root : 'public'})
+
+}  );*/
 
   // signUpPageRoutes ==============================================================
   var signUpPageRoutes = App.route('signUpPageRoutes');
