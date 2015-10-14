@@ -15,23 +15,27 @@
 .clearfix:after { clear: both; }
 
 body {
-	background: #fff;
-	color: #8a8c7e;
+	background: #fafafa;
+	color: #0D1113;
+	/*color: #fcfcfc;*/
 	font-size: 100%;
 	line-height: 1.25;
 	font-family: 'Lato', 'Avenir Next', Arial, sans-serif;
 }
 
-.className{
-	width:700px;
+.instructionStyle{
+	width:850px;
 	font-size: 18px;
 	text-align: justify;
     text-justify: inter-word;
 	/*height:150px;*/
 	position:absolute;
-	left:40%;
-	top:30%;
+	left:35%;
+	top:26%;
 	margin:-75px 0 0 -135px;
+	background: #86AAC4;
+	padding: 40pt;
+	border-radius: 5px; 
 }
 
 .relative {
