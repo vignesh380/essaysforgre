@@ -15,9 +15,9 @@
 .clearfix:after { clear: both; }
 
 body {
-	background: #fafafa;
-	color: #0D1113;
-	/*color: #fcfcfc;*/
+	background: #f0f0f0;
+	/*color: #0D1113;*/
+	color: #e9e8e9;
 	font-size: 100%;
 	line-height: 1.25;
 	font-family: 'Lato', 'Avenir Next', Arial, sans-serif;
@@ -31,9 +31,10 @@ body {
 	/*height:150px;*/
 	position:absolute;
 	left:35%;
-	top:26%;
+	top:25%;
 	margin:-75px 0 0 -135px;
-	background: #86AAC4;
+	/*background: #86AAC4;*/
+	background: #1E88E5;
 	padding: 40pt;
 	border-radius: 5px; 
 }
