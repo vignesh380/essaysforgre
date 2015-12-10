@@ -50,7 +50,7 @@ p,b {
     border-radius: 0;
     padding: 10px;
     margin: 0;
-    background: #1E88E5;
+    background: #00b0f;f
     border-style: none;
     text-align: justify;
     text-justify: inter-word;
@@ -71,7 +71,7 @@ p,b {
 html,body {
     width: 100%;
     height:100%;
-    background: #1E88E5;
+    background: #00b0ff;
     overflow-x:hidden;
 }
 
